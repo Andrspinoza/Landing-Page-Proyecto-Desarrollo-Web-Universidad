@@ -1,0 +1,41 @@
+/* Identidad aprobada: estructura original, cereza social y azul marino universitario.
+   Separada para conservar intacta la hoja original y su vista de respaldo. */
+:root {
+  --primary: #B4193D;
+  --primary-hover: #931231;
+  --primary-soft: #FCECF1;
+  --bg: #FCFAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F3F2F7;
+  --border: #E5DFEA;
+  --text: #172B4D;
+  --text-2: #526078;
+  --text-3: #68748A;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  color: var(--text);
+}
+.brand__symbol {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.nav { background: rgba(252,250,252,.9); }
+.hero {
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(180,25,61,.075), transparent 60%),
+    radial-gradient(700px 380px at 10% 0%, rgba(23,43,77,.045), transparent 60%);
+}
+.card__avatar { background: linear-gradient(135deg, #B4193D, #DA6B88); }
+.eyebrow { color: var(--text); }
+.footer { background: #172B4D; }
+
+/* The longer approved heading keeps the original grid and fluid scale. */
+.hero h1 { font-size: clamp(36px, 4.4vw, 52px); }
