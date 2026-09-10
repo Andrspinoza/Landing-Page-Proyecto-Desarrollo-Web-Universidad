@@ -52,24 +52,36 @@
         <p class="hero__note">Cuenta verificada con tu correo universitario.</p>
       </div>
 
-      <div class="hero__art" aria-hidden="true">
-        <div class="card card--back"></div>
-        <div class="card card--mid"></div>
-        <div class="card card--front">
-          <div class="card__avatar"></div>
-          <div class="card__name">Camila R.</div>
-          <div class="card__meta">Ing. de Sistemas · Ciclo 7 · Lima Centro</div>
+      <div class="hero__art">
+        <span class="floating-note" data-nota>¿Y si hoy sí se arma?</span>
+        <div class="card card--back" aria-hidden="true"></div>
+        <div class="card card--mid" aria-hidden="true"></div>
+        <div class="card card--front" data-perfil>
+          <span class="demo-label">Perfil de ejemplo</span>
+          <img class="card__foto" data-foto src="assets/perfiles/camila.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+          <div class="card__name" data-nombre>Camila R.</div>
+          <div class="card__meta" data-meta>Ing. de Sistemas · Ciclo 7 · Lima Centro</div>
           <div class="affinity">
             <div class="affinity__top">
               <span class="affinity__label">Afinidad</span>
-              <span class="affinity__value">82%</span>
+              <span class="affinity__value" data-valor>82%</span>
             </div>
-            <div class="affinity__bar"><i style="width:82%"></i></div>
-            <p class="affinity__why">Coinciden: Base de datos · Ciclo 7 · Sede Lima Centro</p>
+            <div class="affinity__bar"><i data-barra style="width:82%"></i></div>
+            <p class="affinity__why" data-coinciden>Coinciden: Base de datos · Ciclo 7 · Sede Lima Centro</p>
           </div>
-          <div class="chips">
+          <div class="chips" data-chips>
             <span>Base de datos</span><span>Backend</span><span>Vóley</span>
           </div>
+        </div>
+
+        <div class="ruleta" role="group" aria-label="Perfiles de ejemplo">
+          <button class="ruleta__flecha" type="button" data-anterior aria-label="Perfil anterior">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="ruleta__puntos" data-puntos></span>
+          <button class="ruleta__flecha" type="button" data-siguiente aria-label="Perfil siguiente">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -239,18 +251,23 @@
   <!-- ══════════════════════ EQUIPO ══════════════════════ -->
   <section class="section" id="equipo">
     <div class="wrap">
-      <h2 class="section__title">El equipo</h2>
+      <h2 class="section__title">Conoce al equipo</h2>
       <p class="section__sub">
         Proyecto del curso Desarrollo Web Integrado · Ciclo VII · Universidad Tecnológica del Perú · 2026
       </p>
       <ul class="team">
-        <li><span>EO</span><div><strong>Espinoza Ortiz, John Andre</strong><small>U22303581</small></div></li>
-        <li><span>LV</span><div><strong>Licas Velasquez, María Fernanda</strong><small>—</small></div></li>
-        <li><span>EC</span><div><strong>Espinoza Cermeño, Jesús Fernando</strong><small>U22227274</small></div></li>
-        <li><span>ES</span><div><strong>Escobedo Salazar, Bruno Fernando</strong><small>U24224701</small></div></li>
-        <li><span>PA</span><div><strong>Paez Alvarado, Ubes Manuel</strong><small>U22323100</small></div></li>
+        <li class="team__lead">
+          <span>AE</span>
+          <div>
+            <strong>André Espinoza</strong>
+            <small class="team__role">CEO · Tech Lead · Arquitecto de Software · Platform Engineer</small>
+          </div>
+        </li>
+        <li><span>JE</span><div><strong>Jesús Fernando Espinoza</strong><small class="team__role">Desarrollador Full Stack</small></div></li>
+        <li><span>ML</span><div><strong>María Fernanda Licas</strong><small class="team__role">Scrum Master · UX/UI Designer</small></div></li>
+        <li><span>BE</span><div><strong>Bruno Fernando Escobedo</strong><small class="team__role">Ingeniero de Infraestructura (DevOps) · DBA</small></div></li>
+        <li><span>UP</span><div><strong>Ubes Manuel Páez</strong><small class="team__role">Analista QA</small></div></li>
       </ul>
-      <p class="teacher">Docente: <strong>Iván Robles Fernández</strong></p>
     </div>
   </section>
 

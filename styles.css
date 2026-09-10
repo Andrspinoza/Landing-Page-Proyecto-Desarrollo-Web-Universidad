@@ -227,10 +227,11 @@ a { color: inherit; text-decoration: none; }
 /* Tarjetas apiladas del hero */
 .hero__art {
   position: relative;
-  min-height: 400px;
+  min-height: 590px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 12px;
 }
 .card {
   position: absolute;
@@ -240,21 +241,86 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
-.card--back  { height: 330px; transform: rotate(-8deg) translate(-26px, 10px); opacity: .55; }
-.card--mid   { height: 340px; transform: rotate(5deg) translate(20px, 4px);   opacity: .8; }
+.card--back  { height: 360px; transform: rotate(-12deg) translate(-35px, 12px); background: var(--primary-soft); }
+.card--mid   { height: 360px; transform: rotate(9deg) translate(25px, 8px);     background: var(--primary); border-color: var(--primary); }
 .card--front {
   position: relative;
-  padding: 22px;
+  padding: 28px;
+  transform: rotate(-3deg);
   box-shadow: var(--shadow-lg);
 }
 
-.card__avatar {
-  width: 60px; height: 60px;
+/* Ruleta de perfiles de ejemplo: el contenido se desvanece al cambiar */
+.card--front > *:not(.demo-label) { transition: opacity .28s ease; }
+.card--front.is-cambiando > *:not(.demo-label) { opacity: 0; }
+.floating-note { transition: opacity .28s ease; }
+.floating-note.is-cambiando { opacity: 0; }
+
+/* Controles de la ruleta */
+.ruleta {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex; align-items: center; gap: 14px;
+  padding: 7px 12px;
   border-radius: var(--r-pill);
-  background: linear-gradient(135deg, var(--primary), #8f8ff0);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.ruleta__flecha {
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: var(--r-pill);
+  border: none;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease;
+}
+.ruleta__flecha:hover { background: var(--primary-soft); color: var(--primary); }
+.ruleta__flecha:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ruleta__puntos { display: flex; align-items: center; gap: 7px; }
+.ruleta__puntos i {
+  width: 7px; height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--border);
+  transition: background .25s ease, transform .25s ease;
+}
+.ruleta__puntos i.is-activo { background: var(--primary); transform: scale(1.35); }
+
+.demo-label {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-3);
+}
+.floating-note {
+  position: absolute;
+  bottom: 72px; right: -8px;
+  z-index: 4;
+  padding: 13px 21px;
+  border-radius: 14px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 16px; font-weight: 700;
+  transform: rotate(-5deg);
+  box-shadow: var(--shadow);
+}
+
+.card__foto {
+  width: 84px; height: 84px;
+  border-radius: var(--r-pill);
+  object-fit: cover;
+  display: block;
+  background: var(--surface-2);
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--primary-soft);
   margin-bottom: 14px;
 }
-.card__name { font-family: var(--font-title); font-weight: 700; font-size: 17px; }
+.card__name { font-family: var(--font-title); font-weight: 700; font-size: 24px; }
 .card__meta { font-size: 13px; color: var(--text-2); margin-bottom: 18px; }
 
 .affinity { margin-bottom: 16px; }
@@ -460,6 +526,18 @@ a { color: inherit; text-decoration: none; }
 .team small  { font-size: 12px; color: var(--text-3); }
 .teacher { font-size: 15px; color: var(--text-2); }
 
+.team__lead { border-color: var(--primary); box-shadow: var(--shadow); }
+.team__role {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 11px;
+  border-radius: var(--r-pill);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+}
+
 /* ─────────────── Footer ─────────────── */
 
 .footer {
@@ -487,7 +565,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 980px) {
   .hero__inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero__art { min-height: 380px; }
+  .hero__art { min-height: 500px; }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
   .grid--3, .steps { grid-template-columns: 1fr; }
   .step { padding-top: 32px; }
@@ -512,4 +590,17 @@ a { color: inherit; text-decoration: none; }
   .section { padding: 60px 0; }
   .grid--2, .grid--4 { grid-template-columns: 1fr; }
   .lead { font-size: 16px; }
+
+  /* La nota se recoge dentro del bloque para no tapar los chips ni desbordar */
+  .hero__art { min-height: 600px; }
+  /* Las tarjetas de atras se acercan: rotadas y a pantalla angosta se salian */
+  .card--back { transform: rotate(-9deg) translate(-18px, 12px); }
+  .card--mid  { transform: rotate(7deg) translate(12px, 8px); }
+  .floating-note {
+    right: auto; left: 50%;
+    bottom: 68px;
+    transform: translateX(-50%) rotate(-3deg);
+    font-size: 14px;
+    padding: 11px 17px;
+  }
 }
